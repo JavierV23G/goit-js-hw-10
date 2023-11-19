@@ -1,5 +1,9 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+* {
+    list-style: none;
+}
+
 .catPicture {
     width: 400px;
     height: 400px;
