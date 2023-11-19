@@ -4,11 +4,22 @@
     list-style: none;
 }
 
+body {
+    padding: 20px 40px;
+}
+
 .catPicture {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
 }
 
 .cat-info {
     display: flex;
+    margin-top: 50px;
 }
+
+.cat-completeInfo {
+    width: 500px;
+    font-size: 20px;
+}
+

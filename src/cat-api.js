@@ -1,13 +1,20 @@
 import axios from 'axios';
 
+const catInfo = document.querySelector('.cat-info');
+const loader = document.querySelector('.loader');
+
+loader.style.display = 'none';
+
 export function fetchCatByBreed(selectedBreedId) {
-    const catInfo = document.querySelector('.cat-info');
+    loader.style.display= 'block';
 
     axios
     .get(
         `https://api.thecatapi.com/v1/images/search?breed_ids=${selectedBreedId}`
     )
     .then(response => {
+        loader.style.display= 'none';
+
         const catData = response.data;
         if (
         catData &&
@@ -27,7 +34,7 @@ export function fetchCatByBreed(selectedBreedId) {
         const ulElement = document.querySelector('.cat-completeInfo');
         ulElement.innerHTML = `
         <li><h2>${catBreed.name}</h2></li>
-        <li><p><strong>Description:</strong> ${catBreed.description}</p></li>
+        <li><p>${catBreed.description}</p></li>
         <li><p><strong>Temperament:</strong> ${catBreed.temperament}</p></li>
         `;
         
@@ -40,6 +47,7 @@ export function fetchCatByBreed(selectedBreedId) {
         }
     })
     .catch(error => {
+        loader.style.display= 'none';
         console.error('Error fetching cat data:', error);
         catInfo.innerHTML =
         '<p>Oops! Something went wrong while fetching cat data.</p>';
