@@ -4,6 +4,9 @@ import { fetchCatByBreed } from "./cat-api";
 axios.defaults.headers.common["x-api-key"] = "live_SIFTvSVX5Hqh6v9SUd9xSKCQz6ArdrcxidgwATNB79K7LkHNMPbHMK5TISKIpGg2";
 
 const catSelector = document.getElementById('breed-select');
+const errorElement = document.querySelector('.error');
+
+errorElement.style.display = 'none';
 
 document.addEventListener('DOMContentLoaded', fetchBreeds);
 
@@ -20,15 +23,15 @@ function fetchBreeds() {
         })
         .catch(error => {
             console.error('Error fetching data:', error);
-            const errorElement = document.querySelector('.error');
             errorElement.style.display = 'block';
         });
-};
+}
 
 catSelector.addEventListener('change', () => {
     const selectedBreedId = catSelector.value;
     fetchCatByBreed(selectedBreedId);
 });
+
 
 
 

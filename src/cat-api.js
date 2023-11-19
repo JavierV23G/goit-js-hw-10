@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
+const errorElement = document.querySelector('.error');
 
 loader.style.display = 'none';
 
@@ -30,7 +31,6 @@ export function fetchCatByBreed(selectedBreedId) {
         imgElement.alt = 'Cat Image';
         imgElement.classList.add('catPicture');
 
-      // Crear el contenido del ul
         const ulElement = document.querySelector('.cat-completeInfo');
         ulElement.innerHTML = `
         <li><h2>${catBreed.name}</h2></li>
@@ -49,7 +49,6 @@ export function fetchCatByBreed(selectedBreedId) {
     .catch(error => {
         loader.style.display= 'none';
         console.error('Error fetching cat data:', error);
-        catInfo.innerHTML =
-        '<p>Oops! Something went wrong while fetching cat data.</p>';
+        errorElement.style.display = 'block';
     });
 }
