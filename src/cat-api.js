@@ -18,20 +18,19 @@ export function fetchCatByBreed(selectedBreedId) {
 
         const catData = response.data;
         if (
-        catData &&
         catData.length > 0 &&
         catData[0].breeds &&
         catData[0].breeds.length > 0
         ) {
         const catImage = catData[0].url;
         const catBreed = catData[0].breeds[0];
-
         const imgElement = document.createElement('img');
+        const ulElement = document.querySelector('.cat-completeInfo');
+
         imgElement.src = catImage;
         imgElement.alt = 'Cat Image';
         imgElement.classList.add('catPicture');
 
-        const ulElement = document.querySelector('.cat-completeInfo');
         ulElement.innerHTML = `
         <li><h2>${catBreed.name}</h2></li>
         <li><p>${catBreed.description}</p></li>
